@@ -1,4 +1,6 @@
 <?php
+define('COOLIRIS_PLUGIN_VERSION', get_plugin_ini('CoolIris', 'version'));
+
 add_plugin_hook('public_theme_header', 'cool_iris_public_header');
 
 add_filter('define_response_contexts', 'cool_iris_response_context');
