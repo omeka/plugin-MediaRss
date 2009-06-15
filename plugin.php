@@ -26,5 +26,5 @@ function cool_iris_response_context($context)
 function cool_iris_public_header()
 {
     // add a check to see if using itemsController...
-    echo '<link rel="alternate" type="application/rss+xml" title="" href="'.items_output_uri('rssm').'" /> ';
+    echo '<link rel="alternate" type="application/rss+xml" title="" href="'.items_output_uri('rssm').'" id="gallery"/> ';
 }
