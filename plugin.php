@@ -1,8 +1,6 @@
 <?php
 define('COOLIRIS_PLUGIN_VERSION', get_plugin_ini('CoolIris', 'version'));
 
-add_plugin_hook('public_theme_header', 'cool_iris_public_header');
-
 add_filter('define_response_contexts', 'cool_iris_response_context');
 add_filter('define_action_contexts', 'cool_iris_action_context');
 
@@ -23,8 +21,11 @@ function cool_iris_response_context($context)
     return $context;
 }
 
-function cool_iris_public_header()
+function cool_iris_rssm()
 {
-    // add a check to see if using itemsController...
-    echo '<link rel="alternate" type="application/rss+xml" title="" href="'.items_output_uri('rssm').'" id="gallery"/> ';
+    $request = Zend_Controller_Front::getInstance()->getRequest();
+
+	if (($request->getControllerName() == 'items' && $request->getActionName() == 'browse') || ($request->getControllerName() == 'index' && $request->getActionName() == 'index')) {
+	    return '<link rel="alternate" type="application/rss+xml" title="CoolIris Feed" href="'.items_output_uri('rssm').'" id="gallery"/>' . "\n";
+	}
 }
