@@ -1,10 +1,10 @@
 <?php
-define('COOLIRIS_PLUGIN_VERSION', get_plugin_ini('CoolIris', 'version'));
+define('MEDIARSS_PLUGIN_VERSION', get_plugin_ini('MediaRSS', 'version'));
 
-add_filter('define_response_contexts', 'cool_iris_response_context');
-add_filter('define_action_contexts', 'cool_iris_action_context');
+add_filter('define_response_contexts', 'mediarss_response_context');
+add_filter('define_action_contexts', 'mediarss_action_context');
 
-function cool_iris_action_context($context, $controller)
+function mediarss_action_context($context, $controller)
 {
     if ($controller instanceof ItemsController) {
         $context['browse'][] = 'rssm';
@@ -13,7 +13,7 @@ function cool_iris_action_context($context, $controller)
     return $context;
 }
 
-function cool_iris_response_context($context)
+function mediarss_response_context($context)
 {
     $context['rssm'] = array('suffix'  => 'rssm', 
                             'headers' => array('Content-Type' => 'text/xml'));
@@ -21,7 +21,7 @@ function cool_iris_response_context($context)
     return $context;
 }
 
-function cool_iris_rssm()
+function mediarss_rssm()
 {
     $request = Zend_Controller_Front::getInstance()->getRequest();
 
