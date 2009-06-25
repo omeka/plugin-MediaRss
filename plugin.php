@@ -1,10 +1,10 @@
 <?php
-define('MEDIARSS_PLUGIN_VERSION', get_plugin_ini('MediaRSS', 'version'));
+define('MEDIARSS_PLUGIN_VERSION', get_plugin_ini('MediaRss', 'version'));
 
-add_filter('define_response_contexts', 'mediarss_response_context');
-add_filter('define_action_contexts', 'mediarss_action_context');
+add_filter('define_response_contexts', 'media_rss_response_context');
+add_filter('define_action_contexts', 'media_rss_action_context');
 
-function mediarss_action_context($context, $controller)
+function media_rss_action_context($context, $controller)
 {
     if ($controller instanceof ItemsController) {
         $context['browse'][] = 'rssm';
@@ -13,7 +13,7 @@ function mediarss_action_context($context, $controller)
     return $context;
 }
 
-function mediarss_response_context($context)
+function media_rss_response_context($context)
 {
     $context['rssm'] = array('suffix'  => 'rssm', 
                             'headers' => array('Content-Type' => 'text/xml'));
@@ -21,7 +21,7 @@ function mediarss_response_context($context)
     return $context;
 }
 
-function mediarss_rssm()
+function media_rss_rssm()
 {
     $request = Zend_Controller_Front::getInstance()->getRequest();
 
