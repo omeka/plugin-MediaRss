@@ -26,6 +26,6 @@ function media_rss_rssm()
     $request = Zend_Controller_Front::getInstance()->getRequest();
 
 	if (($request->getControllerName() == 'items' && $request->getActionName() == 'browse') || ($request->getControllerName() == 'index' && $request->getActionName() == 'index')) {
-	    return '<link rel="alternate" type="application/rss+xml" title="CoolIris Feed" href="'.items_output_uri('rssm').'" id="gallery"/>' . "\n";
+	    return '<link rel="alternate" type="application/rss+xml" title="Media RSS Feed" href="'.items_output_uri('rssm').'" id="gallery"/>' . "\n";
 	}
 }
