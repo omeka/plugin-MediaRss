@@ -3,7 +3,7 @@ define('MEDIARSS_PLUGIN_VERSION', get_plugin_ini('MediaRss', 'version'));
 
 add_filter('define_response_contexts', 'media_rss_response_context');
 add_filter('define_action_contexts', 'media_rss_action_context');
-add_plugin_hook('public_theme_header', 'media_rss_public_theme_header');
+add_plugin_hook('public_theme_header', 'media_rss_theme_header');
 
 function media_rss_action_context($context, $controller)
 {
